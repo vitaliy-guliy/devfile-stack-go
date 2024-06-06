@@ -1,0 +1,24 @@
+schemaVersion: 2.2.0
+metadata:
+  name: go
+components:
+  - container:
+      image: registry.access.redhat.com/ubi9/go-toolset:1.19.13-4.1697647145
+      args: ["tail", "-f", "/dev/null"]
+      memoryLimit: 1024Mi
+      mountSources: true
+    name: runtime
+commands:
+  - exec:
+      env:
+        - name: GOPATH
+          value: /projects/go-starter/.go
+        - name: GOCACHE
+          value: /projects/go-stater/.cache
+      commandLine: echo "GOCACHE=$GOCACHE" && echo '-----------------' && export && go build main.go
+      component: runtime
+      group:
+        isDefault: true
+        kind: build
+      workingDir: /projects/go-starter
+    id: build
