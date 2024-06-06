@@ -12,13 +12,13 @@ commands:
   - exec:
       env:
         - name: GOPATH
-          value: /projects/go-starter/.go
+          value: /projects/devfile-stack-go/.go
         - name: GOCACHE
-          value: /projects/go-stater/.cache
+          value: /projects/devfile-stack-go/.cache
       commandLine: echo "GOCACHE=$GOCACHE" && echo '-----------------' && export && go build main.go
       component: runtime
       group:
         isDefault: true
         kind: build
-      workingDir: /projects/go-starter
+      workingDir: /projects/devfile-stack-go
     id: build
