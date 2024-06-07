@@ -22,3 +22,14 @@ commands:
         kind: build
       workingDir: /projects/devfile-stack-go
     id: build
+  - exec:
+      env:
+        - name: TEST
+          value: "the quote\""
+      commandLine: echo "TEST=$TEST" && echo '-----------------' && export
+      component: runtime
+      group:
+        isDefault: false
+        kind: run
+      workingDir: /projects/devfile-stack-go
+    id: test
